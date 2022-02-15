@@ -1,0 +1,11 @@
+{
+  "name": "Actox-web starter",
+  "description": "Boilerplate for a quick working actix-web project",
+  "repository": "https://github.com/gabrieldemian/web3-backend",
+  "success_url": "/",
+  "keywords": ["rust", "actix"],
+  "website": "https://github.com/gabrieldemian/web3-backend",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/emk/heroku-buildpack-rust.git"
+  }
+}
