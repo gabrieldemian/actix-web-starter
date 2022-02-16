@@ -1,4 +1,3 @@
-use std::future::{ready, Ready};
 use actix_web::{
     dev::HttpResponseBuilder,
     error,
@@ -6,7 +5,8 @@ use actix_web::{
     HttpRequest, HttpResponse, Responder,
 };
 use derive_more::{Display, Error};
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
+use std::future::{ready, Ready};
 
 #[derive(Debug, Display, Error)]
 pub enum UserError {
@@ -28,7 +28,6 @@ impl error::ResponseError for UserError {
         HttpResponseBuilder::new(self.status_code())
             .content_type("application/json")
             .header("Access-Control-Allow-Origin", "*")
-            .set_header("Access-Control-Allow-Origin", "*")
             .body(body)
     }
 
@@ -57,17 +56,6 @@ impl Responder for JsonResponse {
         ready(Ok(HttpResponse::Ok()
             .content_type("application/json")
             .header("Access-Control-Allow-Origin", "*")
-            .set_header("Access-Control-Allow-Origin", "*")
             .body(body)))
-    }
-}
-
-/* typed params from endpoints */
-pub mod info {
-    use serde::Deserialize;
-
-    #[derive(Deserialize)]
-    pub struct SayHello {
-        pub name: String,
     }
 }
